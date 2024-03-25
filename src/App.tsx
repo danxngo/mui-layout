@@ -3,7 +3,6 @@ import { BrowserRouter, Navigate, Outlet, Route, Routes } from "react-router-dom
 import { CenteredLayout, MainLayout } from "./layout";
 import { ForgotPass, Login, SignUp, useAuth } from "./pages/auth";
 import NotFound from "./pages/not-found";
-import TenantList from "./pages/tenants/list";
 
 const App: React.FC = () => {
   const {isAuthenticated} = useAuth();
@@ -21,7 +20,7 @@ const App: React.FC = () => {
             <Navigate to="/login" replace /> 
           }
         >
-          <Route index path="/" element={<TenantList/>} />
+          <Route index path="/" element={<>Home</>} />
         </Route>
         <Route
           element={
