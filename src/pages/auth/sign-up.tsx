@@ -1,10 +1,18 @@
-import { Box, Button, Checkbox, FormControlLabel, Grid, Link, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  Link,
+  TextField,
+  Typography
+} from "@mui/material";
 import React from "react";
 import { Link as Linker } from "react-router-dom";
 import { useAuth } from ".";
 
 const SignUp: React.FC = () => {
   const { signup } = useAuth();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -18,11 +26,14 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <>
-      <Typography component="h1" variant="h5">
-        Sign up
+    <Box sx={{ mt: 5, mx: 'auto', maxWidth: 400 }}>
+      <Typography variant="h4" gutterBottom sx={{ textAlign: "center" }}>
+        TaskMaster
       </Typography>
-      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2, p: 2 }}>
+        <Typography component="h1" variant="h5" sx={{ mb: 2 }}>
+          Sign up
+        </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
@@ -66,12 +77,12 @@ const SignUp: React.FC = () => {
               autoComplete="new-password"
             />
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <FormControlLabel
               control={<Checkbox value="allowExtraEmails" color="primary" />}
               label="I want to receive inspiration, marketing promotions and updates via email."
             />
-          </Grid>
+          </Grid> */}
         </Grid>
         <Button
           type="submit"
@@ -81,14 +92,18 @@ const SignUp: React.FC = () => {
         >
           Sign Up
         </Button>
-        <Grid container>
+        <Grid container justifyContent="center">
           <Grid item>
-            Already have an account?
-            <Link component={Linker} to="/login" underline="none">{" Login"}</Link>
+            <Typography>
+              Already have an account?{" "}
+              <Link component={Linker} to="/login" underline="none">
+                Login
+              </Link>
+            </Typography>
           </Grid>
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 };
 

@@ -6,14 +6,13 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-
 import React from "react";
 import { Link as Linker } from "react-router-dom";
 import { useAuth } from ".";
 
-
 const Login: React.FC = () => {
   const { login } = useAuth();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -25,12 +24,15 @@ const Login: React.FC = () => {
   };
 
   return (
-    <>
-      <Typography component="h1" variant="h5">
-        Login
+    <Box sx={{ mt: 5, mx: 'auto', maxWidth: 400 }}>
+      <Typography variant="h4" gutterBottom sx={{ textAlign: "center" }}>
+        TaskMaster
       </Typography>
-      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
-        <Grid container spacing={2}>
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 , p:2 }}>
+        <Typography component="h1" variant="h5" sx={{mb:2}}>
+          Login
+        </Typography>
+        <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12}>
             <TextField
               required
@@ -52,19 +54,11 @@ const Login: React.FC = () => {
               autoComplete="current-password"
             />
           </Grid>
-          {/* <Grid item xs={12}>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-          </Grid> */}
-
-          <Grid item>
+          <Grid item xs={12}>
             <Link to="/forgot-pass" component={Linker} underline="none">
-              {"Forgot Password?"}
+              Forgot Password?
             </Link>
           </Grid>
-
         </Grid>
         <Button
           type="submit"
@@ -74,16 +68,18 @@ const Login: React.FC = () => {
         >
           Login
         </Button>
-        <Grid container>
+        <Grid container justifyContent="center">
           <Grid item>
-            Don't have an account?
-            <Link to="/sign-up" component={Linker} underline="none">
-              {" Sign Up"}
-            </Link>
+            <Typography>
+              Don't have an account?{" "}
+              <Link to="/sign-up" component={Linker} underline="none">
+                Sign Up
+              </Link>
+            </Typography>
           </Grid>
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 };
 
